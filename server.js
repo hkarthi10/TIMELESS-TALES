@@ -9,16 +9,24 @@ const jwt = require('jsonwebtoken')
 const authMiddleware = require('./middleware/auth')
 const routes = require('./routes/user.route')
 const morgan = require("morgan")
+const path = require("path");
 app.use(morgan("dev"))
 require('dotenv').config()
 const jwtSecret = process.env.JWT_SECRET
 const mongourl = process.env.MONGO_URI
 
 
+app.use(express.static("Diary writing"))
+
+
 //middleware
 app.use(express.json())
 app.use(cors())
 app.use("/api/entries", routes)
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, "Diary writing", "tt.homepage1.html"))})
+
 
 app.get('/api/protected-route', authMiddleware, (req, res) => {
     res.json({ message: 'This is a protected route', user: req.user })
@@ -40,10 +48,6 @@ mongoose.connect(mongourl)
 
 
 
-//simple server side response 
-app.get('/', (req, res) => {
-    res.send('Welcome to Timeless Tales server')
-})
 //signup-endpoint
 app.post('/api/auth/signup', async (req, res) => {
     try {
