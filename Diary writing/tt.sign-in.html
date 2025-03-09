@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TT sign-in</title>
+    <link rel="stylesheet" href="tt.sign-in&up.css">
+    <script src="tt.sign-in.js" defer></script>
+</head>
+<body>
+    <header>
+        <h2>Sign-in</h2>
+    </header>
+    
+    <div>
+
+        <form id="sign-in-form"action="/api/auth/signin" method="POST">
+            <input type="email" name="email" placeholder="Email" id="email" required>
+            <br>
+            <input type="password" name="password" placeholder="Password" id="password"required>
+            <br> 
+            <button type="button" id="back-btn">Back</button>
+            <button type="submit"  id="sign-in-btn">Sign-in</button>
+        </form>
+    </div>
+</body>
+</html>
