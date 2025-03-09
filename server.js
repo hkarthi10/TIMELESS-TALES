@@ -12,6 +12,7 @@ const morgan = require("morgan")
 app.use(morgan("dev"))
 require('dotenv').config()
 const jwtSecret = process.env.JWT_SECRET
+const mongourl = process.env.MONGO_URI
 
 
 //middleware
@@ -26,7 +27,7 @@ app.get('/api/protected-route', authMiddleware, (req, res) => {
 
 
 
-mongoose.connect('mongodb+srv://karthimenaka1028:kNngD6XlAEkLUbVt@ttcluster.v1pc7.mongodb.net/?retryWrites=true&w=majority&appName=ttcluster')
+mongoose.connect(mongourl)
     .then(() => {
         console.log('Connected to database')
         app.listen(3000, () => {
