@@ -33,12 +33,11 @@ app.get('/api/protected-route', authMiddleware, (req, res) => {
 })
 
 
-
-
+const PORT = process.env.PORT || 3000;
 mongoose.connect(mongourl)
     .then(() => {
         console.log('Connected to database')
-        app.listen(3000, () => {
+        app.listen(PORT, () => {
             console.log('Server is running on port 3000.')
         })
     })
