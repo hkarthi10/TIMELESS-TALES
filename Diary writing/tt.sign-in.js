@@ -8,7 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = document.getElementById('password').value
 
         try {
-            const response = await fetch("http://localhost:3000/api/auth/signin", {
+            const API_BASE_URL = window.location.hostname.includes("localhost")
+                ? "http://localhost:3000"
+                : "https://timeless-tales-uzxu.onrender.com"
+            const response = await fetch(`${API_BASE_URL}/api/auth/signin`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

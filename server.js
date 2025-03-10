@@ -21,7 +21,12 @@ app.use(express.static("Diary writing"))
 
 //middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors({ 
+    origin: ["http://localhost:3000", "https://timeless-tales-uzxu.onrender.com"],
+    methods: "GET,POST",
+    allowedHeaders: "Content-Type,Authorization"
+}))
+
 app.use("/api/entries", routes)
 
 app.get('/', (req, res) => {
@@ -39,7 +44,10 @@ mongoose.connect(mongourl)
         console.log('Connected to database')
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}.`)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e60288 (Updated server.js and fixed API issues)
         })
     })
     .catch((error) => {

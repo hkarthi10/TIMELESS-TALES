@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         return
     }
     try {
-        const response = await fetch("http://localhost:3000/api/entries", {
+        const API_BASE_URL = window.location.hostname.includes("localhost")
+            ? "http://localhost:3000"
+            : "https://timeless-tales-uzxu.onrender.com";
+        const response = await fetch(`${API_BASE_URL}/api/entries`, {
             method: "GET",
             headers: { "Authorization": `Bearer ${token}` }
         })
