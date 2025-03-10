@@ -44,10 +44,6 @@ mongoose.connect(mongourl)
         console.log('Connected to database')
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}.`)
-<<<<<<< HEAD
-
-=======
->>>>>>> 0e60288 (Updated server.js and fixed API issues)
         })
     })
     .catch((error) => {
