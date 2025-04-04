@@ -21,11 +21,13 @@ app.use(express.static("Diary writing"))
 
 //middleware
 app.use(express.json())
-app.use(cors({ 
-    origin: ["http://localhost:3000", "https://timeless-tales-uzxu.onrender.com"],
-    methods: "GET,POST",
-    allowedHeaders: "Content-Type,Authorization"
-}))
+app.use(cors({
+    origin: ["http://localhost:3000", "https://timeless-tales-n2qj.onrender.com"], 
+    methods: "GET,POST", 
+    allowedHeaders: ["Content-Type", "Authorization"], 
+    credentials: true 
+}));
+
 
 app.use("/api/entries", routes)
 
