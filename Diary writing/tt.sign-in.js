@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const API_BASE_URL = window.location.hostname.includes("localhost")
                 ? "http://localhost:3000"
-                : "https://timeless-tales-uzxu.onrender.com"
+                : "https://timeless-tales-n2qj.onrender.com"
             const response = await fetch(`${API_BASE_URL}/api/auth/signin`, {
                 method: "POST",
                 headers: {
