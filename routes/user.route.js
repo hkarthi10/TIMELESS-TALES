@@ -41,4 +41,27 @@ router.get('/:entryId', authMiddleware, async (req, res) => {
     }
 })
 
+router.delete('/:entryId', authMiddleware, async (req, res) => {
+    try {
+        const entry = await Entry.findByIdAndDelete(req.params.entryId)
+        if (!entry) {
+            return res.status(404).json({ message: "Entry not found" })
+        }
+        res.json({ message: "Entry deleted successfully" })
+    } catch (error) {
+        console.error("Error deleting entry:", error)
+        res.status(500).json({ message: "Server error" })
+    }
+})
+
+router.get('/', authMiddleware, async (req, res) => {
+    try {
+        const entries = await Entry.find({ userId: req.user.id }).sort({ date: -1 })
+        res.json(entries)
+    } catch (error) {
+        console.error("Error fetching entries:", error)
+        res.status(500).json({ message: "Server error" })
+    }
+})
+
 module.exports = router

@@ -85,6 +85,37 @@ main {
     padding: 10px;
     background: #f9f9f9;
     border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+/* Entry Actions */
+.entry-actions {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.delete-btn {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    hover-transform: scale(1.05);
+}
+
+.delete-btn:hover {
+    background-color: #b71c1c;
+    transform: scale(1.05);
+}
+
+.delete-btn:active {
+    background-color: #7d0000;
 }
 
 /* Responsive Design */

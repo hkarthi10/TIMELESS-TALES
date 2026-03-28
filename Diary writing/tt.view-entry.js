@@ -31,6 +31,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("entry-date").textContent = formatDate(entry.date)
         document.getElementById("diary-content").textContent = entry.content
 
+        // Delete button functionality
+        document.getElementById("delete-btn").addEventListener("click", async () => {
+            if (confirm("Are you sure you want to delete this entry? This action cannot be undone.")) {
+                try {
+                    const deleteResponse = await fetch(`${API_BASE_URL}/api/entries/${entryId}`, {
+                        method: "DELETE",
+                        headers: { "Authorization": `Bearer ${token}` }
+                    })
+
+                    if (!deleteResponse.ok) {
+                        throw new Error("Failed to delete the diary entry.")
+                    }
+
+                    alert("Entry deleted successfully!")
+                    window.location.href = "tt.homepage2.html"
+                } catch (error) {
+                    console.error("Error:", error)
+                    alert("Could not delete the entry. Try again later.")
+                }
+            }
+        })
+
     } catch (error) {
         console.error("Error:", error)
         alert("Could not load the entry. Try again later.")
